@@ -1,0 +1,27 @@
+---------------------example 1------------------
+var fs  = require('fs');
+
+
+var writableStream = fs.createWriteStream('Big_data.txt');
+
+var counter = 0;
+while (counter<100000){
+writableStream.write('Node.js is an ultimate backend javascript for backend development','UTF8')
+counter ++;
+}
+
+---------------example 2 ---------------------------------------------------
+var fs = require('fs')
+var readableStream = fs.createReadStream('Node-stream-handson/data_file');
+var data ='';
+var data1='';
+readableStream.setEncoding('UTF8');
+readableStream.on('data',function(chunk){
+  data1= chunk.toString();
+  data += chunk;
+  //data1 = data.toString();
+
+});
+readableStream.on('end',function(){
+	console.log(data1.length);
+});
